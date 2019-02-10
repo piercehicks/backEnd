@@ -1,0 +1,87 @@
+Using pseudocode, refactor the code for the following examples using the principles you have learned in this checkpoint.
+
+a. The following function prints the subtotal of a customer's transaction and receives payment accordingly.
+
+FUNCTION checkOutCustomer(subTotal, discountRate, paymentType)
+   PRINT "Your total due is: " + subTotal * discountRate + (subTotal * tax)
+
+   IF paymentType = 'CASH' THEN
+       CALL getPayment RETURNING amount
+        PRINT "Change due: " + amount - subTotal * discountRate + (subTotal * tax)
+      END FUNCTION
+
+   IF paymentType = 'CREDIT CARD' THEN
+       CALL getPayment RETURNING amount
+        PRINT "Your credit card has been charged: " + subTotal * discountRate + (subTotal * tax)
+   END FUNCTION
+
+
+Refractor checklist
+- Single responsibility principle: Split code in CASH and CREDIT CARD individual functions.
+- Nesting: Adjusted PRINT
+
+b. The following function checks out a book if there are no issues with the guest's account.
+
+FUNCTION checkoutBook(book, guest)
+  IF guest.accountActive THEN
+    APPEND book to guest.books
+      SET book.status to "Checked Out"
+        PRINT "Your books have been issued."
+  END IF
+
+  ELSE
+    IF NOT(guest.hasOverdueBooks) THEN
+        IF guest.outstandingFees = 0 THEN
+          PRINT "Unable to check out book."
+    END IF
+   END FUNCTION
+
+Reasoning
+- Removed repetitive ELSE IF
+- Grouped successful checkout and unsuccessful checkout code
+- Adjusted Nesting
+______________
+
+
+c. The following class is a code snippet that should support the transactions a customer can perform at an ATM.
+
+CLASS BankAccount
+
+ FUNCTION displayBalance
+    PRINT balance
+ END FUNCTION
+
+ FUNCTION deposit(amount)
+    SET balance to balance + amount
+ END FUNCTION
+
+ FUNCTION withdraw(amount)
+     IF balance > amount THEN
+       SET balance to balance - amount
+     END
+ END FUNCTION
+
+END CLASS
+
+CLASS Credit
+
+ FUNCTION creditCardOffer
+     IF NOT(customer.CreditCardUser) THEN
+         CALL offerCreditCard
+     END
+ END FUNCTION
+
+ FUNCTION checkStatus
+     IF NOT(customer.CheckingAccountUser) THEN
+         CALL offerCheckingAccount
+     END
+ END FUNCTION
+
+END CLASS
+
+END
+
+Reasons
+- Single responsibility principle: The class needs to be split between debit and credit functions
+- Naming: Maybe a bit a stretch but after referring to the Naming rules section starting variable names
+          with "has" is not good formatting
