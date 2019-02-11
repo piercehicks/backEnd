@@ -1,0 +1,33 @@
+//////
+EXERCISES
+//////
+
+1.) What is the main difference between a stack and a queue?
+Answer: The key difference is a stack is last or task in first out,
+        while a queue is first in first out like server request.
+
+2.) What are the similarities between stacks and queues?
+Answer: Both are priority list used by developers designed to efficiently
+        organize data in  particular order.
+
+3.) Imagine you are an engineer tasked with implementing the UNDO and
+    REDO options in a word processor such as Microsoft Word. Which data
+    structure would you use for each option and why?
+Answer:
+-  Well for UNDO you want to use LIFO/stack, because I want to remove
+  the most recent addition. Last (addition) in first (addition out).
+- For REDO I want to add FIFO because I'm adding back the first item I
+  removed.
+
+///////
+Programming Questions
+//////
+Before you begin coding, write out a plan as to how you will solve the question.
+
+Given a string, reverse it using a stack. For example, the string "Bloc!" should be converted to "!colB".
+
+Implement the pop method of a stack using one queue. Make a FIFO data structure mirror the functionality of a LIFO data structure. Since the internal list is not the same as defined in the checkpoint, it may help to rewrite the pseudocode first.
+
+To delete an item, take all of the elements in the queue one at a time and put them at the end of the queue, except for the last one which should be removed and returned.
+
+Implement the enqueue and dequeue methods defined in the checkpoint inside your own Queue class.

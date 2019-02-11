@@ -1,0 +1,40 @@
+A.) use array input
+let riderLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+// console.log(riderLine);
+
+
+B.) Insert a new person, "Mary" at the end of the line.
+riderLine.push("Mary");
+// console.log(riderLine);
+
+
+C.) Find a person in line named "Josh." This function should return the position of 2 in the array
+function findJosh(){
+  console.log(riderLine[2]);
+}
+//findJosh();
+
+
+D.) Find a person in line named "Emily."
+function findEmily(){
+  if (riderLine.indexOf("Emily") , 0) {
+      return "She's in line";
+      } else {
+        return "She's not in line";
+      }
+};
+// console.log(findEmily());
+
+E.) Ava wants to allow a friend, "Melissa", to cut in line in front of her
+riderLine.splice(1,0, "Mellisa");
+// console.log(riderLine);
+
+F.) Patrick wants to leave the line
+riderLine.splice(4,1);
+// console.log(riderLine);
+
+2.) Provide another real-world example that you can model using a data structure.
+//A good example will be my favorite thing on the internet,Google Drive. A Cloud file management software that is a system of organized/nested folders of files.
+
+3.) How would your data structure allow developers to access and manipulate the data?
+// I partially answered this previously but if we are referring to Google Drive, it would be the manipulation of files locations and C.R.U.D operations.
