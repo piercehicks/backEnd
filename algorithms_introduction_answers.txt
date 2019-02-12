@@ -1,0 +1,44 @@
+1.) Using proper pseudo-code, describe the following primitive algorithms:
+
+a. Making coffee;
+SEQUENCE for  making coffee
+    INPUT water in coffee maker.
+    INPUT coffee into coffee maker.
+     INIT coffee maker.
+  END
+
+b. Washing dishes;
+WHILE running water
+  INPUT dirty dishes
+  INPUT Soap and sponge to scrub
+  OUTPUT clean dish from water
+ END
+
+c. Survive Traffic
+  INPUT favorite podcast
+  COMPUTE amount of time you will be in traffic. Make peace with it.
+  INIT favorite podcast
+  OUTPUT horn sound from car when you get cut coffee
+END
+
+
+2.) As with the knot algorithm, there may be more than one way to solve the problem.
+It is essential to try to pick the best algorithm for a situation.
+Name three companies who created an algorithm that made them successful, e.g.,
+Google's search algorithm. It doesn't need to be a tech example
+(such as a recipe or manufacturing a product). Google's algorithm produces more
+relevant results than other search engines;
+what about each of your cases make them stand out?
+
+3 companies
+  1. Ford Motor Company: For Ford it would have to be assembly line to
+    assemble cars.What makes them stand out is the efficiency of the line with
+    specialized workers
+  2. Uber: The application utilizes current car owners instead  of its own fleet.
+          What makes them stand out is they used vehicles already on the road to 
+          transport passengers skipping the overhead cost.
+  3. Amazon: Suggestion analyzation algorithm. What makes it special is how
+              highly personalized each suggested  or partnering items list is.
+
+  3.) A efficient algorithm to me whatever series of steps accomplishes the goal
+      with the best balance of cost, speed and quality of result or output.
