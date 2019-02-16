@@ -1,3 +1,53 @@
+///
+1
+///
+Clean code is code written logically, is DRY,  and in a format that is readable
+a.k.a doesn’t require a lot of comments to understand what is going on.
+
+///
+2
+///
+I often think about the advent of AI for machines in driving.
+While I believe in the technology if some auto manufacturers who have typically
+focused solely on auto making were to underinvest and/or under-maintain their code
+for self-driving, auto-stopping,  and self-parking vehicles it puts a lot of people’s
+lives at risk as well as the burgeoning industry.
+
+///
+3
+///
+
+FUNCTION  do (x,y)
+	IF y = “F” THEN
+	SET Z to (x-32) * (5/9)
+		Degrees Fahrenheit to Celsius
+
+
+
+	ELSE IF y  = “C” THEN
+
+	SET z to x * 1.800 + 32.00 degrees Celsius to Fahrenheit
+
+		PRINT Z
+
+END IF
+
+END FUNCTION
+
+Reason: This could be cleaner. We could remove the first PRINT z because there is one at the end of the else/if.
+Also we already entered in y = “C” so we don’t need that next line repeating that.
+
+
+///
+4
+///
+
+Yes. The else/if function does not have repetitions.
+
+
+///
+5
+///
 Using pseudocode, refactor the code for the following examples using the principles you have learned in this checkpoint.
 
 a. The following function prints the subtotal of a customer's transaction and receives payment accordingly.
@@ -85,3 +135,56 @@ Reasons
 - Single responsibility principle: The class needs to be split between debit and credit functions
 - Naming: Maybe a bit a stretch but after referring to the Naming rules section starting variable names
           with "has" is not good formatting
+
+****
+
+Programming Questions
+
+****
+
+///
+6
+///
+
+// Given an array of integers, find out whether the sum of the integers is a perfect square.
+// If it is a perfect square, return the square root, otherwise return the sum.
+
+const numbers = [27,54,28];
+// returns sum of numbers if not perfect square
+const sum = numbers.reduce((total, amount) => total + amount);
+// calc perfect square
+function sqrNum(){
+  return (Math.sqrt(sum));
+}
+
+function sqrPerfNum(numbers){
+  if (sqrNum % 2 !== 0){
+    return sqrNum(numbers);
+  }
+  else{
+    return sum;
+  }
+};
+
+console.log(sqrPerfNum(numbers));
+
+///
+7
+///
+//Duplicate Given an array of integers, find out whether the array contains any duplicate elements.
+The function should return true if any value appears at least twice in the array, and false if every element is distinct.
+
+let arr= [1,3,1,4];
+
+function checkArray() {
+    for(let i = 0; i <= arr.length; i++) {
+        for(let j = i; j <= arr.length; j++) {
+            if(i != j && arr[i] == arr[j]) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+console.log(checkArray(arr));
