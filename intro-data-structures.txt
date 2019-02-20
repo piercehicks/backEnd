@@ -9,10 +9,16 @@ riderLine.push("Mary");
 
 
 C.) Find a person in line named "Josh." This function should return the position of 2 in the array
-function findJosh(){
-  console.log(riderLine[2]);
+
+let riderLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+let Rider = "Josh";
+
+
+let findRider = (Rider) => {
+  return riderLine.indexOf(Rider) ;
 }
-//findJosh();
+
+findRider(Rider);
 
 
 D.) Find a person in line named "Emily."

@@ -1,0 +1,21 @@
+/////
+Exercises
+/////
+
+1. What are some pros and cons of using linked lists instead of arrays?
+    a. Pros: Save on data expenses by not needing to rearrange the physical
+       memory space to make room
+    b. Cons: Less efficient to access an element in a list than a array, speed-wise
+
+2. Real-World Example
+   a. A real-world example would be file folders on your computer. While not
+      necessarily all in a certain order each file folder name informs
+      you where a file/element may be.
+
+/////
+Programming Questions
+/////
+
+1. TBD
+
+2. Given an unsorted singly linked list, remove all duplicates from the linked list.
