@@ -16,6 +16,42 @@ Exercises
 Programming Questions
 /////
 
-1. TBD
+1. Code issue is that the newer node is being placed next to the existing/head node.
+   The goal is...
+
+    "The linked list push function should take a value, create a node,
+     and add it to the end of a list"
+
+     what it's doing now is akin to going from [1,2,3] insert 4 to [1,4,2,3]
+     instead of [1,2,3,4]
+
+   An example of this process is...
+
+   let arr = [1,2,3];
+let returnedArr = arr.push(4);
+
+//console.log(arr);
+
+
 
 2. Given an unsorted singly linked list, remove all duplicates from the linked list.
+  Answer:
+
+  const arr = ['a', 'c', 'd', 'd', 'a'];
+
+let uniqueArr = [...new Set(arr)];
+// console.log(uniqueArr);
+
+
+3.//Given an unsorted singly linked list, reverse it.
+//Example
+//Input: a -> b -> c -> d
+//Output: d -> c -> b -> a
+
+
+Answer:
+const arr = ["a","b","c","d"];
+
+let reversedArr = arr.reverse();
+
+//console.log(reversedArr);
