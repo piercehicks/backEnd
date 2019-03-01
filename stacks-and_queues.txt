@@ -16,7 +16,7 @@ Answer: Both are priority list used by developers designed to efficiently
 Answer:
 -  Well for UNDO you want to use LIFO/stack, because I want to remove
   the most recent addition. Last (addition) in first (addition out).
-- For REDO I want to add FIFO because I'm adding back the first item I
+- For REDO I want to add LIFO because I'm adding back the last item I
   removed.
 
 ///////
@@ -51,29 +51,33 @@ Additional Programming Question
 
 
 /////
-Answer
-https://codepen.io/piercehicks/pen/ZPzwoa
+Answer to Question 2 and Question 1 of Programming section
+https://codepen.io/piercehicks/pen/bZNQdE 
 ////
 
-function Queue () {
-    collection = [];
-    this.print = function() {
-        console.log(collection);
-    };
-    this.enqueue = function(element) {
-        collection.push(element);
-    };
-    this.dequeue = function() {
-        return collection.shift();
-    };
+class Queue {
+  constructor(){
+   this.collection = [];
+    this.print = ()=> {
+        console.log(this.collection);
+  }
+  }
+    /// Methods
+    enqueue(personInLine) {
+      this.collection.push(personInLine);
+    }
+     dequeue(){
+        return this.collection.shift();
+    }
 
-}
+};
 
-let que = new Queue();
-que.enqueue('linePosition1');
-que.enqueue('linePosition2');
-que.enqueue('linePosition3');
-que.print();
-que.dequeue();
-que.dequeue();
-que.print();
+
+const lineUp = new Queue();
+lineUp.enqueue('linePosition1');
+lineUp.enqueue('linePosition2');
+lineUp.enqueue('linePosition3');
+lineUp.print();
+lineUp.dequeue();
+lineUp.dequeue();
+lineUp.print();
