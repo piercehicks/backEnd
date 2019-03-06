@@ -20,4 +20,16 @@ A graph that is usually similar to a Linked List and most trees. More detailed,
 it's a Non-looping graph with no set beginning and end.
 
 > What kind of graph is a binary search tree?
-I'm going with unweighted since most Tree graphs fit this category. 
+I'm going with unweighted since most Tree graphs fit this category.
+
+*********
+
+Programming Questions
+
+*********
+
+1. Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+
+
+
+2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.

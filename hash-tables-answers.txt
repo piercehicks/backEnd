@@ -20,3 +20,204 @@
 *- The name and location of every company in a given city. Object
 *- All of the books checked out from a library by a particular individual.Hash table
 *- The primary and secondary phone numbers for a contact. Hash table
+
+
+///////
+Programming Questions
+//////
+
+///////
+Create a hash table that allows a sales associate to enter a customer's name,
+address, and phone number into the system and look up customers using
+their phone numbers.
+//////
+
+let hash = (string, max) => {
+  let hash = 0;
+  for (let i = 0; i < string.length; i++) {
+    hash += string.charCodeAt(i);
+  }
+  return hash % max;
+};
+
+
+let HashTable = function() {
+
+
+  let storage = [];
+  const storageLimit = 100;
+
+
+  this.add = function(key,value) {
+    let index = hash(key, storageLimit);
+    if (storage[index] === undefined) {
+      storage[index] = [
+        [key,value]
+      ];
+    } else {
+      var inserted = false;
+      for (let i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          storage[index][i][1] = value;
+          inserted = true;
+        }
+      }
+      if (inserted === false) {
+        storage[index].push([key,value]);
+      }
+    }
+  };
+
+
+  this.lookup = function(key) {
+    let index = hash(key, storageLimit);
+    if (storage[index] === undefined) {
+      return undefined;
+    } else {
+      for (let i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          return storage[index][i][1];
+        }
+      }
+    }
+  };
+
+
+};
+
+
+let customer = new HashTable();
+customer.add(1234567,{name:'Lebron', address:' 20 Greenland Rd.'})
+customer.add(7654321,{name:'Kobe',address:'47 Jam St.'});
+customer.add(987654,{name:'Shaq',address:'123 Elvis St.'});
+
+
+console.log(customer.lookup(1234567));
+
+
+//////
+Create a hash table that allows a store owner to track their store's inventory
+and quantity.
+//////
+
+let hash = (string,max) =>{
+  let hash= 0
+  for(let i=0; i<string.length;i++){
+    hash += string.charCodeAt(i)
+  }
+  return hash % max;
+};
+
+
+let HashTable = function(){
+ let storage = [];
+ const storageLimit= 5;
+
+
+
+
+ this.add = function(key, value) {
+    let index = hash(key, storageLimit);
+    if (storage[index] === undefined) {
+      storage[index] = [
+        [key, value]
+      ];
+    } else {
+      let inserted = false;
+      for (let i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          storage[index][i][1] = value;
+          inserted = true;
+        }
+      }
+      if (inserted === false) {
+        storage[index].push([key, value]);
+      }
+    }
+  };
+
+  this.search = function(key) {
+    let index = hash(key, storageLimit);
+    if (storage[index] === undefined) {
+      return undefined;
+    } else {
+      for (let i = 0; i < storage[index].length; i++) {
+        if (storage[index][i][0] === key) {
+          return storage[index][i][1];
+        }
+      }
+    }
+  };
+
+
+}
+let stock = new HashTable();
+stock.add('ice cream',20);
+stock.add('soy milk', 345);
+stock.add('juice',99);
+
+
+console.log(stock.search('soy milk'));
+console.log(stock.search('ice cream'));
+
+
+
+/////////
+Create a hash table that allows digital copies of newspapers to be entered and
+searched by publisher and publication date.
+////////
+
+let hash = (string, max)=> {
+  let hash = 0;
+  for(let i=0; i< string.length;i++){
+    hash+= string.charCodeAt(i);
+  }
+  return hash % max;
+}
+
+
+class Newspaper {
+  constructor() {
+    this.storage = [];
+    this.storageLimit = 60;
+  }
+
+
+  add(publisher, pubDate) {
+    let key = publisher + pubDate;
+    let index = hash(key, this.storageLimit);
+    let data = [publisher, pubDate];
+      if (this.storage[index] === undefined) {
+        this.storage[index] = [ ];
+    }
+    this.storage[index].push(data);
+    }
+
+
+  search(publisher, pubDate) {
+    let key = publisher + pubDate;
+    let index = hash(key, this.storageLimit);
+    let result = [];
+
+    if (!this.storage[index]) { return 'No results' }
+      this.storage[index].forEach(entry => {
+       if (entry[0] === publisher && entry[1] === pubDate) {
+        result.push(entry);
+      }
+    })
+    return result;
+  }
+}
+
+
+
+
+let news = new Newspaper();
+news.add('Washington Post', '2011');
+news.add('NBC', '1998');
+news.add('New York Times','2009');
+news.add('Vox', '1976');
+
+
+console.log(news.search('Washington Post', '2011'));
+console.log(news.search('Bay Times'));

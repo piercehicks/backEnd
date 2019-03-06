@@ -16,31 +16,41 @@ Exercises
 Programming Questions
 /////
 
-1. Code issue is that the newer node is being placed next to the existing/head node.
-   The goal is...
+//Question 1
+// A.) explanation of the bug: current equals the next node when it should be null
+//B.) functional implementation of the method: See below
 
-    "The linked list push function should take a value, create a node,
-     and add it to the end of a list"
+LinkedList.prototype.push = function(val){  
+    let node = {
+       value: val,
+       next: null
+    }
 
-     what it's doing now is akin to going from [1,2,3] insert 4 to [1,4,2,3]
-     instead of [1,2,3,4]
+    if(!this.head){
+      this.head = node;
+      this.length += 1;
+      return node;
+    }
+    else{
+      current = this.head;
 
-   An example of this process is...
+      while(current.next){
+        current = current.next;
+      }
 
-   let arr = [1,2,3];
-let returnedArr = arr.push(4);
+      current.next = node;
+      this.length += 1;
+      return node;
+    }
+  }
 
-//console.log(arr);
+
+
+//Question 2
+ Given an unsorted singly linked list, remove all duplicates from the linked list.
 
 
 
-2. Given an unsorted singly linked list, remove all duplicates from the linked list.
-  Answer:
-
-  const arr = ['a', 'c', 'd', 'd', 'a'];
-
-let uniqueArr = [...new Set(arr)];
-// console.log(uniqueArr);
 
 
 3.//Given an unsorted singly linked list, reverse it.
