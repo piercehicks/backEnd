@@ -28,8 +28,256 @@ Programming Questions
 
 *********
 
-1. Given a Binary Search Tree and a value, write a function that checks to see whether the value exists within the tree.
+1. Given a Binary Search Tree and a value, write a function that checks to
+see whether the value exists within the tree.
+Process: Begin at the root of 8 explore the less than left child and the greater
+than root right child. Since we want to know whether a value exist we'd use T/F.
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+class Node {
+  constructor(data, left = null, right = null) {
+    this.data = data;
+    this.left = left;
+    this.right = right;
+  }
+}
+
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+  add(data) {
+    const node = this.root;
+    if (node === null) {
+      this.root = new Node(data);
+      return;
+    } else {
+      const searchTree = function(node) {
+        if (data < node.data) {
+          if (node.left === null) {
+            node.left = new Node(data);
+            return;
+          } else if (node.left !== null) {
+            return searchTree(node.left);
+          }
+        } else if (data > node.data) {
+          if (node.right === null) {
+            node.right = new Node(data);
+            return;
+          } else if (node.right !== null) {
+            return searchTree(node.right);
+          }
+        } else {
+          return null;
+        }
+      };
+      return searchTree(node);
+    }
+  }
+  find(data) {
+    let current = this.root;
+    while (current.data !== data) {
+
+      if (data < current.data) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+      if (current === null) {
+        return null;
+      }
+    }
+    return current;
+}
+  isPresent(data) {
+    let current = this.root;
+    while (current) {
+      if (data === current.data) {
+        return true;
+      }
+      if (data < current.data) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
+    return false;
+  }
+
+}
+
+
+const searchedItem = new BinarySearchTree();
+
+
+searchedItem.add(3);
+searchedItem.add(1);
+searchedItem.add(6);
+searchedItem.add(4);
+searchedItem.add(7);
+searchedItem.add(10);
+searchedItem.add(14);
+searchedItem.add(13);
+
+
+//True
+console.log(searchedItem.isPresent(3));
+//False
+console.log(searchedItem.isPresent(564));
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
 
-2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that finds the distance between the two nodes.
+2. Given a Binary Search Tree and two nodes, n1 and n2, write a function that
+ finds the distance between the two nodes.
+ Process: Find lowest common ancestor or the two nodes first, then we can calculate
+ the distance.
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+
+
+  findDistanceBetweenNodes(root, num1, num2) {
+    let lowestCommonAncestor = this.findCommonAncestor(root, num1, num2);
+    let distanceNode1ToRoot = this.countAncestors(lowestCommonAncestor, num1);
+    let distanceNode2ToRoot = this.countAncestors(lowestCommonAncestor, num2);
+    let distanceRootToAncestor = this.countAncestors(root,lowestCommonAncestor);
+
+
+    let totalDistance = (distanceNode1ToRoot + distanceNode2ToRoot) - (2 * distanceRootToAncestor);
+    return ('The distance is' + ' ' + totalDistance);
+  }
+
+
+  findCommonAncestor(root, num1, num2) {
+    if (!root) return;
+    let lowestCommonAncestor = root.data;
+    if (num1 === lowestCommonAncestor || num2 === lowestCommonAncestor) {
+      return lowestCommonAncestor;
+    }
+    if (num1 < lowestCommonAncestor && num2 < lowestCommonAncestor) {
+      return this.findCommonAncestor(root.left, num1, num2);
+    }
+    if (num1 > lowestCommonAncestor && num2 > lowestCommonAncestor) {
+      return this.findCommonAncestor(root.right, num1, num2);
+    }
+    return lowestCommonAncestor;
+  }
+
+
+  countAncestors(root, data) {
+    let thisNode = this.root;
+    let nodeCount = 0;
+    while (thisNode) {
+      if (data === thisNode.data) {
+        return nodeCount;
+      }
+      thisNode = data < thisNode.data ? thisNode.left : thisNode.right;
+      nodeCount++;
+    }
+  }
+
+
+  getRootNode() {
+    return this.root;
+  }
+ add(data) {
+    const node = this.root;
+    if (node === null) {
+      this.root = new Node(data);
+      return;
+    } else {
+      const searchTree = function(node) {
+        if (data < node.data) {
+          if (node.left === null) {
+            node.left = new Node(data);
+            return;
+          } else if (node.left !== null) {
+            return searchTree(node.left);
+          }
+        } else if (data > node.data) {
+          if (node.right === null) {
+            node.right = new Node(data);
+            return;
+          } else if (node.right !== null) {
+            return searchTree(node.right);
+          }
+        } else {
+          return null;
+        }
+      };
+      return searchTree(node);
+    }
+  }
+
+
+  find(data) {
+    let current = this.root;
+    while (current.data !== data) {
+
+      if (data < current.data) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+      if (current === null) {
+        return null;
+      }
+    }
+    return current;
+}
+
+
+   isPresent(data) {
+    let current = this.root;
+    while (current) {
+      if (data === current.data) {
+        return true;
+      }
+      if (data < current.data) {
+        current = current.left;
+      } else {
+        current = current.right;
+      }
+    }
+    return false;
+  }
+
+}
+
+
+let binarySearch = new BinarySearchTree();
+
+
+binarySearch.add(8);
+binarySearch.add(10);
+binarySearch.add(3);
+binarySearch.add(14);
+binarySearch.add(6);
+binarySearch.add(1);
+binarySearch.add(13);
+binarySearch.add(7);
+binarySearch.add(4);
+
+
+let root = binarySearch.getRootNode();
+
+console.log(binarySearch.findDistanceBetweenNodes(root, 8, 10));
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
