@@ -278,6 +278,5 @@ binarySearch.add(4);
 
 
 let root = binarySearch.getRootNode();
-
 console.log(binarySearch.findDistanceBetweenNodes(root, 8, 10));
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
