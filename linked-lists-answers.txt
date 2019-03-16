@@ -17,10 +17,11 @@ Programming Questions
 /////
 
 //Question 1
-// A.) explanation of the bug: current equals the next node when it should be null
+// A.) explanation of the bug: The function is setting current node to head when
+      there is already a head, making 2 head nodes.
 //B.) functional implementation of the method: See below
 
-LinkedList.prototype.push = function(val){  
+LinkedList.prototype.push = function(val){
     let node = {
        value: val,
        next: null
@@ -49,19 +50,138 @@ LinkedList.prototype.push = function(val){
 //Question 2
  Given an unsorted singly linked list, remove all duplicates from the linked list.
 
+ function LinkedList(){
+   this.head= null;
+   this.length= 0;
+ }
+
+ LinkedList.prototype.push = function(val){
+     let node = {
+        value: val,
+        next: null
+     }
+
+     if(!this.head){
+       this.head = node;
+       this.length += 1;
+       return node;
+     }
+     else{
+       current = this.head;
+       while(current.next){
+         current = current.next;
+       }
+       current.next = node;
+       this.length += 1;
+       return node;
+     }
+   }
+
+ LinkedList.prototype.duplicate = function(){
+  if (!this.head || !this.head.next) {
+       console.log("duplicates clear");
+       return;
+   }
+
+     let thisNode = this.head;
+     while (thisNode != null) {
+       let previousNode = thisNode;
+       let nextNode = thisNode.next;
+       while (nextNode != null) {
+         if (thisNode.value == nextNode.value) {
+           previousNode.next = nextNode.next;
+           this.length --;
+         } else {
+           previousNode = nextNode;
+         }
+         nextNode = nextNode.next;
+       }
+       thisNode = thisNode.next;
+     }
+     return this;
+   }
+
+ let list= new LinkedList()
+ list.push(a);
+ list.push(c);
+ list.push(d);
+ list.push(d);
+ list.push(a);
+ list.duplicate()
 
 
 
 
-3.//Given an unsorted singly linked list, reverse it.
-//Example
-//Input: a -> b -> c -> d
-//Output: d -> c -> b -> a
+//3.Given an unsorted singly linked list, reverse it.
 
+function LinkedList(){
+  this.head= null;
+  this.length=0;
+}
 
-Answer:
-const arr = ["a","b","c","d"];
+LinkedList.prototype.push = function(val){
+    let node = {
+       value: val,
+       next: null
+    }
 
-let reversedArr = arr.reverse();
+    if(!this.head){
+      this.head = node;
+      this.length += 1;
+      return node;
+    }
+    else{
+      current = this.head;
+      while(current.next){
+        current = current.next;
+      }
+      current.next = node;
+      this.length += 1;
+      return node;
+    }
+  }
 
-//console.log(reversedArr);
+LinkedList.prototype.duplicate = function(){
+ if (!this.head || !this.head.next) {
+      console.log("no duplicates");
+  }
+
+    let thisNode = this.head;
+    while (thisNode != null) {
+      let previousNode = thisNode;
+      let nextNode = thisNode.next;
+      while (nextNode != null) {
+        if (thisNode.value == nextNode.value) {
+          previousNode.next = nextNode.next;
+          this.length --;
+        } else {
+          previousNode = nextNode;
+        }
+        nextNode = nextNode.next;
+      }
+      thisNode = thisNode.next;
+    }
+    return this;
+  }
+
+LinkedList.prototype.reverse= function() {
+    var previousNode = null;
+    var thisNode = this.head;
+    var nextNode;
+
+    while (thisNode) {
+      nextNode = thisNode.next;
+      thisNode.next = previousNode;
+      previousNode = thisNode;
+      thisNode = nextNode;
+    }
+
+    this.head = previousNode;
+  }
+
+let list= new LinkedList()
+list.push(5);
+list.push(3);
+list.push(1);
+list.push(4);
+list.reverse();

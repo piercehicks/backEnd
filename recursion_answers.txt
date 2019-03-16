@@ -1,0 +1,65 @@
+1.Define and compare recursion and iteration.
+
+- Recursion is the technique when a function calls itself with parameters moving
+forward based off base cases. That's the article definition. My plain english
+definition is a function which calls itself.
+
+- Iteration is when a function calls itself and a repeats a certain number of times.
+
+- Recursion solutions run slower than interative ones. The flip side of that is
+iterative ones are a times harder to implement
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+2. Name five algorithms that are commonly implemented by recursion.
+
+1. Factorial of number
+2. Greatest common divisor
+3. Fibonnacci numbers
+4. Recursive binary searches
+5. Linked List
+
+Source: Quora
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+3. When should you use recursion, and when should you avoid recursion? Give examples for each.
+
+- When to use recursion? When a algorithm can be defined as a combination of sub-results
+starting with known cases. EX: Finding a common divisor
+- When not to use recursion? Algorithms that loop through a data set. EX: Fibonnacci sequences
+
+////////////////////////////////////////////////////////////////////////////////////////
+4. Compare the recursive and iterative solutions to the three algorithms from the
+checkpoint (factorial, maximum, and fibonacci). What is similar, and what is different?
+Similarly, they both use of ELSE statements in their psuedocode. The difference I See
+is the recursive solutions seem easier to read.
+
+////////////////////////////////////////////////////////////////////////////////////////
+5. Given a multi-dimensional collection (such as an array) where the number of
+dimensions is unknown, write a recursive algorithm to count the number of
+items in the entire collection.
+
+- what is a rec algor? - what are parts now how to match
+
+
+FUNCTION mdc(item)
+  IF item IS null THEN
+    ERROR
+  ELSE IF item IS NOT null
+    RETURN item
+  ELSE
+    CALL mdc WITH item and ADD newItem
+    RETURN number totalItems
+  END IF
+END FUNCTION
+
+////////////////////////////////////////////////////////////////////////////////////////
+6. A palindrome is a word or phrase whose spelling is the same either direction
+(e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
+
+////////////////////////////////////////////////////////////////////////////////////////
+7. Google Easter Egg: Google the term "recursion". Google will prompt you with
+"Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
+
+B/c google is checking for all the definitions of recursion
