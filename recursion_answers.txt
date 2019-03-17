@@ -4,10 +4,10 @@
 forward based off base cases. That's the article definition. My plain english
 definition is a function which calls itself.
 
-- Iteration is when a function calls itself and a repeats a certain number of times.
+- Iteration is when a function calls itself and repeats a certain number of times.
 
-- Recursion solutions run slower than interative ones. The flip side of that is
-iterative ones are a times harder to implement
+- Recursive solutions run slower than iterative ones. The flip side of that is
+iterative ones are at times harder to implement
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -32,7 +32,9 @@ starting with known cases. EX: Finding a common divisor
 ////////////////////////////////////////////////////////////////////////////////////////
 4. Compare the recursive and iterative solutions to the three algorithms from the
 checkpoint (factorial, maximum, and fibonacci). What is similar, and what is different?
-Similarly, they both use of ELSE statements in their psuedocode. The difference I See
+
+Similarly, they both can be used to achieve the same result just with different
+degrees of difficulty/ease of use. The difference I see
 is the recursive solutions seem easier to read.
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -40,26 +42,45 @@ is the recursive solutions seem easier to read.
 dimensions is unknown, write a recursive algorithm to count the number of
 items in the entire collection.
 
-- what is a rec algor? - what are parts now how to match
+let calculateArray = (array)=>{
+      let counter =0;
 
+   for (let i=0; i <array.length; i++){
 
-FUNCTION mdc(item)
-  IF item IS null THEN
-    ERROR
-  ELSE IF item IS NOT null
-    RETURN item
-  ELSE
-    CALL mdc WITH item and ADD newItem
-    RETURN number totalItems
-  END IF
-END FUNCTION
+     if (typeof array[i] === "object"){
+
+         counter += calculateArray(array[i]);
+     }else{
+       counter++;
+     }
+   }
+    return counter;
+}
+
+console.log(calculateArray([1,2,3,]));
 
 ////////////////////////////////////////////////////////////////////////////////////////
 6. A palindrome is a word or phrase whose spelling is the same either direction
 (e.g., racecar). Write a recursive algorithm to determine if a given word or phrase is a palindrome.
 
+
+let isPalindrome= (str)=>{
+
+   if(str.length === 0){
+     return true;
+  }
+   if (str[0] !== str[str.length-1]){
+     return false;
+   }
+  return isPalindrome(str.slice(1,str.length-1));
+};
+
+ console.log(isPalindrome("eye"));
+
 ////////////////////////////////////////////////////////////////////////////////////////
 7. Google Easter Egg: Google the term "recursion". Google will prompt you with
 "Did you mean: recursion". Explain why this behavior exhibits properties of recursion.
 
-B/c google is checking for all the definitions of recursion
+It exhibits properties of recursion by calling itself over and over
+("Did you mean: recursion") and the definition states "the repeated application
+of a recursive procedure or definition." A.K.A repeating itself
