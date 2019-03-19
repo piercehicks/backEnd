@@ -67,8 +67,8 @@ You work at a pet store, and a child has asked you to net the only white-spotted
 goldfish from the fish tank. Write a program that will help you net the right fish.
 ****
 
-unction searchingFish(arr,spottedFish){
-   for (var i=0; i<arr.length; i++){
+function searchingFish(arr,spottedFish){
+   for (let i=0; i<arr.length; i++){
      if(arr[i]===spottedFish)
        return "Found, spotted fish";
    }
