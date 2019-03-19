@@ -1,0 +1,78 @@
+Questions
+1. What is a real-life scenario that uses linear search?
+
+A hand moving books off the top of a stack
+
+2.What is a real-life scenario that uses binary search?
+
+          Searching words in a dictionary
+
+3. Given the alphabetically sorted collection in this checkpoint, how many
+iterations would it take to find the value G using linear search?
+
+6 iterations
+
+Given the alphabetically sorted collection in this checkpoint,
+how many iterations would it take to find the value G using binary search?
+
+   3 iterations
+
+5. Given an unsorted collection of a million items, which algorithm would you choose
+between linear search and binary search? Explain your reasoning.
+
+If it’s unsorted we have to use linear since it won’t have a middle for binary
+
+6.Given a sorted collection of a million items, which algorithm would you choose
+ between linear search and binary search? Explain your reasoning.
+
+I would choose binary because once sorted I can set a low, high and medium
+then start my search from the middle instead of the beginning
+
+///////////
+Programming Questions
+
+///////////
+
+******
+1.
+You and a friend have set a wager to see who can find the word "Albatross" in the
+dictionary the fastest. Write a program to allow you to win the bet.
+******
+
+function binarySearch(arr,word){
+  let high = arr.length-1;
+  let low = 0;
+  let mid =0 ;
+
+   while( low <= high){
+  mid= Math.floor((high+low)/2)
+   if (arr[mid]== word){
+     return arr[mid];
+   }else if(word >arr[mid]){
+       low = mid +1;
+   }else{
+     hight = mid - 1;
+   }
+  }
+
+}
+
+
+console.log( binarySearch(["soup","albatross","car","bike"], "albatross") );
+
+
+*****
+2
+You work at a pet store, and a child has asked you to net the only white-spotted
+goldfish from the fish tank. Write a program that will help you net the right fish.
+****
+
+unction searchingFish(arr,spottedFish){
+   for (var i=0; i<arr.length; i++){
+     if(arr[i]===spottedFish)
+       return "Found, spotted fish";
+   }
+     return "Not spotted fish! " ;
+  }
+
+console.log( searchingFish(['spottedFish','nemo','zebra fish'],'spottedFish'));
