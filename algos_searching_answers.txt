@@ -1,7 +1,9 @@
 Questions
 1. What is a real-life scenario that uses linear search?
 
-A hand moving books off the top of a stack
+A real life linear search would be an employee checking a line of cereal on
+the shelf for a particular one that a customer said expired.
+He'd be going down the line/aisle one by one.
 
 2.What is a real-life scenario that uses binary search?
 
@@ -10,7 +12,7 @@ A hand moving books off the top of a stack
 3. Given the alphabetically sorted collection in this checkpoint, how many
 iterations would it take to find the value G using linear search?
 
-6 iterations
+7 iterations
 
 Given the alphabetically sorted collection in this checkpoint,
 how many iterations would it take to find the value G using binary search?
@@ -51,7 +53,7 @@ function binarySearch(arr,word){
    }else if(word >arr[mid]){
        low = mid +1;
    }else{
-     hight = mid - 1;
+     high = mid - 1;
    }
   }
 
