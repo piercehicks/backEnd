@@ -17,11 +17,11 @@ searches across, think horizontal.
 
 5. Explain in your own words what an undirected, a-cyclic, unweighted graph is.
 
-A graph that is connected but the edges are bidirectional (undirected),with no
-cycle or closed path, without a cost to travel.
+A graph that is connected but the edges are bidirectional, with no
+cycle or closed path, and without a cost to travel.
 
 6. What kind of graph is a binary search tree?
-Directed, acyclic, and unweighted graph. 
+Directed, acyclic, and unweighted graph.
 
 *********
 
