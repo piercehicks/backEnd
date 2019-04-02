@@ -41,26 +41,29 @@ You and a friend have set a wager to see who can find the word "Albatross" in th
 dictionary the fastest. Write a program to allow you to win the bet.
 ******
 
+let array = ["soup","gut", "albatross", "car","bike"];
+
 function binarySearch(arr,word){
   let high = arr.length-1;
   let low = 0;
-  let mid =0 ;
+  let mid = 0 ;
 
-   while( low <= high){
-  mid= Math.floor((high+low)/2)
+   while(low <= high){
+  mid = Math.floor((high+low)/2)
    if (arr[mid]== word){
      return arr[mid];
    }else if(word >arr[mid]){
-       low = mid +1;
+       low = mid + 1;
    }else{
      high = mid - 1;
    }
   }
-
+ return "Not in dictionary";
 }
 
-
-console.log( binarySearch(["soup","albatross","car","bike"], "albatross") );
+let sortedDictionary = array.sort();
+//console.log(sortedDictionary);
+console.log(binarySearch( sortedDictionary,  "albatross") );
 
 
 *****
