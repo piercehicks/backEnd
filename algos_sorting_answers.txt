@@ -1,0 +1,65 @@
+1.) Write pseudocode for bubble sort.
+
+FUNCTION bubbleSort(collection)
+  REPEAT
+    SET swapped to false
+    FOR i = FIRST INDEX of collection to LAST INDEX of collection - 1
+      IF collection[i] > collection[i + 1] THEN
+        SET tmp to collection[i]
+        SET collection[i] to collection[i + 1]
+        SET collection[i + 1] to tmp
+        SET swapped to true
+      END IF
+    END FOR
+  UNTIL swapped is FALSE
+  RETURN collection
+END FUNCTION
+
+
+2.) Write pseudocode for quicksort.
+
+FUNCTION quickSort(collection)
+  IF collection length <= 1 then
+    RETURN collection
+  ELSE
+    SET pivot to last element in collection
+      Remove last element in collection
+    SET left to empty array
+    SET right to empty array
+    SET new array to empty array
+
+    FOR each i in 0 to collection length - 1
+      IF collection[i] <= pivot
+        APPEND collection[i] to left
+      ELSE
+        APPEND collection[i] to right
+      END IF
+      INCREMENT i
+    END FOR
+
+    CONCAT quickSort(left), pivot, quickSort(right) with newArray
+    RETURN newArray
+  END IF
+END FUNCTION
+
+
+3.)We talked about time complexity in a previous checkpoint, and how to get an
+idea of the efficiency of an algorithm. After looking at the pseudocode for the
+above sorting methods, identify why merge sort and quick sort are much more
+efficient than the others. Walking through each algorithm with a few sample
+collections may help.
+
+Both sorting methods use divide and conquer ideology. They (in a way) split the
+data into parts based on logic, sort, then puts the parts back together
+
+
+
+4.) All of the sorts addressed in this checkpoint are known as comparison sorts.
+Research bucket sort and explain how it works. What is the ideal input for
+bucket sort?
+
+Bucket sort distributes elements of an array into buckets. Each bucket is sorted
+using a sorting algorithm, then the array is reassembled. The ideal input for bucket
+sort is a uniform distribution. I've looked up the definition of uniform distribution,
+my plain english interpretation is that the data being sorted is all the same
+way.
