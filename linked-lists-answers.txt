@@ -48,108 +48,49 @@ LinkedList.prototype.push = function(val){
 
 
 //Question 2
- Given an unsorted singly linked list, remove all duplicates from the linked list.
+ //Given an unsorted singly linked list, remove all duplicates from the linked list.
+//Example
+//Input: a -> c -> d -> d -> a
+//Output: a -> c -> d
 
- function LinkedList(){
-   this.head= null;
-   this.length= 0;
- }
+class Node {
+  constructor(value){
+    this.value = value,
+    this.next = null;
 
- LinkedList.prototype.push = function(val){
-     let node = {
-        value: val,
-        next: null
-     }
-
-     if(!this.head){
-       this.head = node;
-       this.length += 1;
-       return node;
-     }
-     else{
-       current = this.head;
-       while(current.next){
-         current = current.next;
-       }
-       current.next = node;
-       this.length += 1;
-       return node;
-     }
-   }
-
- LinkedList.prototype.duplicate = function(){
-  if (!this.head || !this.head.next) {
-       console.log("duplicates clear");
-       return;
-   }
-
-     let thisNode = this.head;
-     while (thisNode != null) {
-       let previousNode = thisNode;
-       let nextNode = thisNode.next;
-       while (nextNode != null) {
-         if (thisNode.value == nextNode.value) {
-           previousNode.next = nextNode.next;
-           this.length --;
-         } else {
-           previousNode = nextNode;
-         }
-         nextNode = nextNode.next;
-       }
-       thisNode = thisNode.next;
-     }
-     return this;
-   }
-
- let list= new LinkedList()
- list.push(a);
- list.push(c);
- list.push(d);
- list.push(d);
- list.push(a);
- list.duplicate()
-
-
-
-
-//3.Given an unsorted singly linked list, reverse it.
-
-function LinkedList(){
-  this.head= null;
-  this.length=0;
+  }
 }
 
-LinkedList.prototype.push = function(val){
-    let node = {
-       value: val,
-       next: null
-    }
-
-    if(!this.head){
-      this.head = node;
-      this.length += 1;
-      return node;
-    }
-    else{
-      current = this.head;
-      while(current.next){
-        current = current.next;
-      }
-      current.next = node;
-      this.length += 1;
-      return node;
-    }
+class SinglyLinkList {
+  constructor(){
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
   }
 
-LinkedList.prototype.duplicate = function(){
- if (!this.head || !this.head.next) {
+  push(val){
+    let newNode = new Node(val);
+    if(!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+    this.length++;
+    return this;
+  }
+// duplicate doesn't work yet
+duplicate(){
+  if (!this.head || !this.head.next) {
       console.log("no duplicates");
+      return;
   }
 
-    let thisNode = this.head;
+    var thisNode = this.head;
     while (thisNode != null) {
-      let previousNode = thisNode;
-      let nextNode = thisNode.next;
+      var previousNode = thisNode;
+      var nextNode = thisNode.next;
       while (nextNode != null) {
         if (thisNode.value == nextNode.value) {
           previousNode.next = nextNode.next;
@@ -162,26 +103,85 @@ LinkedList.prototype.duplicate = function(){
       thisNode = thisNode.next;
     }
     return this;
+}
+
+
+
+}
+
+let list = new SinglyLinkList;
+list.push("a");
+list.push("c");
+list.push("d");
+list.push("d");
+list.push("a");
+list.duplicate();
+console.log(list);
+
+
+
+//Question 3
+//Given an unsorted singly linked list, //reverse it.
+//Example
+//Input: a -> b -> c -> d
+//Output: d -> c -> b -> a
+
+class Node {
+  // for creation of node
+  constructor(value){
+    this.value = value,
+    this.next = null;
+    // when we init we want it to be null
   }
+}
 
-LinkedList.prototype.reverse= function() {
-    var previousNode = null;
-    var thisNode = this.head;
-    var nextNode;
-
-    while (thisNode) {
-      nextNode = thisNode.next;
-      thisNode.next = previousNode;
-      previousNode = thisNode;
-      thisNode = nextNode;
+class SinglyLinkList {
+  constructor(){
+    // init state of list
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+// add node to list
+  push(val){
+    let newNode = new Node(val);
+    if(!this.head) {
+      // if no head a.k.a empty
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      // if it has a head..
+      this.tail.next = newNode;
+      this.tail = newNode;
     }
-
-    this.head = previousNode;
+    this.length++;
+    return this;
   }
 
-let list= new LinkedList()
-list.push(5);
-list.push(3);
-list.push(1);
-list.push(4);
+  reverse(){
+  if(!this.head) return false;
+  let node = this.head;
+  this.head = this.tail;
+  // makes head tail
+  this.tail = node;
+
+  let prev = null;
+  let next;
+
+  for(let i = 0; i < this.length; i++){
+    next      = node.next;
+    node.next = prev;
+    prev      = node;
+    node      = next;
+  }
+  return true;
+}
+}
+
+let list = new SinglyLinkList;
+list.push("a");
+list.push("b");
+list.push("c");
+list.push("d");
 list.reverse();
+console.log(list);
